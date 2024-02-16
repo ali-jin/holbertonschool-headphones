@@ -2,19 +2,14 @@
   ============================= */
 
 :root {
-    --text-color: white;
     --color-black: #090909;
     --color-white: #ffffff;
-
     --color-primary: #FF6565;
+
     --hover-color: #e64a4a;
     --btn-opacity-hover-active: 0.9;
 
-    --font-family-I: "Source Sans Pro", sans-serif;
-    --font-family-II: "spain Cycle OT", sans-serif;
-
-    --header-background-color: #071629;
-    --hambuger-line-height: 2px;
+    --font-family: "Source Sans Pro", sans-serif;
 }
 
 /* Base
@@ -28,13 +23,13 @@
 
 html {
     scroll-behavior: smooth;
-    font-size: 62.5%;
-    width: 100%;
+    margin: 0;
+    max-width: 100%;
 }
 
 body {
-    color: var(--text-color);
-    font-family: var(--font-family-I);
+    color: var(--color-white);
+    font-family: var(--font-family);
     margin: 0;
 }
 
@@ -47,15 +42,6 @@ a {
     text-decoration: none;
 }
 
-/* Layout
-      ============================= */
-
-.container {
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 /* Header
     ============================== */
 
@@ -63,7 +49,7 @@ a {
     background-image: url("images/headphones_hero_1.jpg");
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 120vh;
 }
 
 .nav-container {
@@ -71,12 +57,6 @@ a {
     justify-content: space-between;
     padding: 1vw 10vw;
     align-items: center;
-}
-
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 30px;
 }
 
 .header-logo img {
@@ -91,67 +71,134 @@ a {
     padding: 0;
 }
 
-.nav {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    text-align: center;
-    display: flex;
-}
-
-
-.nav .nav-item {
+.nav li {
     padding-left: 2rem;
     font-size: 0.75rem;
     display: inline-block;
 }
 
 .nav-item a:hover {
-    color: var(--color-hover-active);
+    color: var(--color-primary);
+}
+
+/* Media Queries header */
+@media (min-width: 481px) and (max-width: 900px) {
+    .header-background {
+        background-position: 37% 0;
+    }
+
+    .header-logo img {
+        width: 12rem;
+        height: auto;
+    }
+
+    .navigation-list li {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        background-position: 35% 0;
+    }
+
+    .header-logo img {
+        width: 12.5rem;
+        height: auto;
+        margin-top: 10px;
+    }
+
+    .nav-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-container .header-logo {
+        margin: 0;
+    }
 }
 
 /* Hamburguer menu */
-
-.header .menu-icon {
-    cursor: pointer;
-    padding: 2.5rem;
-    position: relative;
-    user-select: none;
+.menu-btn,
+.menu-icon {
+    display: none;
 }
 
-.header .menu-icon .navicon {
+.menu-icon .navicon {
     background: var(--color-white);
     display: block;
-    width: 2rem;
-    height: .2rem;
+    width: 1.3rem;
+    height: 0.2rem;
     position: relative;
-    transition: background .2s ease-out;
+    transition: background 0.2s ease-out;
 }
 
-.header .menu-icon .navicon::before,
-.header .menu-icon .navicon::after {
+.menu-icon .navicon::before,
+.menu-icon .navicon::after {
     content: "";
     display: block;
-    width: 100%;
+    width: 2rem;
     height: 100%;
     position: absolute;
     background: var(--color-white);
-    transition: all .2s ease-out;
+    transition: all 0.2 ease-out;
 }
 
-.header .menu-icon .navicon::before {
-    top: .7rem;
+.menu-icon .navicon::before {
+    top: 0.6rem;
 }
 
-.header .menu-icon .navicon::after {
-    top: -.7rem;
+.menu-icon .navicon::after {
+    top: -0.6rem;
+}
+
+/* Media Queries hamburger */
+@media (max-width: 480px) {
+    .navbar-menu {
+        display: none;
+    }
+
+    .menu-icon {
+        display: block;
+        position: absolute;
+        left: 5vw;
+        top: 5vw;
+        margin-top: 10px;
+    }
+
+    .menu-btn:checked~.navbar-menu {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .menu-btn:checked~.navbar-menu .nav li {
+        display: block;
+        margin-bottom: 20px;
+        margin-right: 60px;
+    }
+
+    .menu-btn:checked~.menu-icon .navicon {
+        background: transparent;
+    }
+
+    .menu-btn:checked~.menu-icon .navicon::before {
+        transform: rotate(45deg);
+        top: 0;
+    }
+
+    .menu-btn:checked~.menu-icon .navicon::after {
+        transform: rotate(-45deg);
+        top: 0;
+    }
 }
 
 /* Section HERO
       ============================= */
 
 .section-hero {
-    color: var(--color-white);
+    color: var(--white-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -173,11 +220,11 @@ a {
     line-height: normal;
 }
 
-.container-hero-text {
+.hero-text {
+    width: 70%;
     font-size: 1rem;
-    line-height: 28px;
-    font-weight: normal;
-    margin: 0;
+    font-weight: 400;
+    line-height: 1.925rem;
 }
 
 .button {
@@ -190,13 +237,75 @@ a {
     border-radius: 3.4rem;
     font-size: 0.875rem;
     font-weight: 700;
-    color: var(--color-white);
+    color: var(--white-color);
     border: none;
     margin-top: 3rem;
     margin-bottom: 4rem;
 }
 
-.btn-header:hover {
+.button:hover {
     background-color: var(--hover-color);
     opacity: var(--btn-opacity-hover-active);
-  }
+}
+
+/* Media Queries hero section */
+@media (min-width: 481px) and (max-width: 900px) {
+    .section-hero {
+        margin: 45vw 5vw 10vw;
+    }
+
+    .section-hero .section-title {
+        font-size: 2rem;
+    }
+
+    .section-hero h2 {
+        font-size: 1rem;
+    }
+
+    .section-hero .hero-text {
+        width: 80%;
+        font-size: 1rem;
+        line-height: 1.625rem;
+    }
+
+    .button {
+        width: 10.125rem;
+        height: 2.75rem;
+        border-radius: 1.375rem;
+        flex-shrink: 0;
+        font-size: 0.875rem;
+        margin-top: 2.5rem;
+        margin-bottom: 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-hero {
+        margin: 75vw 5vw 10vw;
+    }
+
+    .section-hero .section-title {
+        font-size: 2rem;
+        width: 22.3rem;
+    }
+
+    .section-hero h2 {
+        font-size: 1.1rem;
+        width: 17.4rem;
+    }
+
+    .section-hero .hero-text {
+        width: 20.9rem;
+        font-size: 1rem;
+        line-height: 1.625rem;
+    }
+
+    .button {
+        width: 10.125rem;
+        height: 2.75rem;
+        border-radius: 1.375rem;
+        flex-shrink: 0;
+        font-size: 0.875rem;
+        margin-top: 10px;
+    }
+}
