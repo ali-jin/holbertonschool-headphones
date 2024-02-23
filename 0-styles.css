@@ -46,7 +46,7 @@ a {
     ============================== */
 
 .header {
-    background-image: url("/assets/images/headphones_hero_1.jpg");
+    background-image: url("./assets/images/headphones_hero_1.jpg");
     background-size: cover;
     background-position: center;
     height: 120vh;
@@ -83,7 +83,7 @@ a {
 
 /* Media Queries header */
 @media (min-width: 481px) and (max-width: 900px) {
-    .header-background {
+    .header {
         background-position: 37% 0;
     }
 
@@ -100,6 +100,7 @@ a {
 @media (max-width: 480px) {
     .header {
         background-position: 35% 0;
+        height: 130vh;
     }
 
     .header-logo img {
